@@ -63,6 +63,7 @@ Dalam penggunaan praktis di metode `build`, `BuildContext` dipakai ketika kita p
 "Hot reload" adalah fitur di Flutter yang memungkinkan kita melihat perubahan kode secara langsung tanpa perlu restart aplikasi sepenuhnya. Saat kita melakukan hot reload, Flutter inject kode yang sudah diubah ke dalam aplikasi yang sedang running, dan yang penting adalah state aplikasi tetap terjaga. Fitur ini sangat membantu dalam mempercepat development cycle dan membuat proses debugging jadi lebih efisien.
 
 Sementara itu, "hot restart" adalah proses yang lebih berat, di mana aplikasi akan restart dari nol. Semua state akan direset dan aplikasi akan reload semua kode dari awal lagi. Kita biasanya pakai hot restart ketika perubahan kode menyentuh struktur aplikasi secara fundamental, atau ketika kita ingin memastikan bahwa setiap perubahan benar-benar ter-apply dengan sempurna dan nggak ada state lama yang tertinggal.
+
 ---
 
 Checklist untuk tugas ini adalah sebagai berikut:
