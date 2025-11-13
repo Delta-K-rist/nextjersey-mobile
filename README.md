@@ -1,6 +1,69 @@
 ## Tugas Individu - PBP C
 ### Deltakristiano Kurniaputra - NPM: 2406425810
 
+<details><summary>Tugas 8: Flutter Navigation, Layouts, Forms, and Input Elements</summary>
+
+## **Q1**: Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()` pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+
+`Navigator.push()` berfungsi untuk menambahkan halaman baru ke dalam navigation stack sambil tetap menyimpan halaman sebelumnya. Dengan ini, pengguna masih bisa kembali ke halaman lama dengan tombol back. Sedangkan `Navigator.pushReplacement()` mengganti halaman aktif dengan halaman baru, sehingga halaman sebelumnya hilang dari stack dan pengguna tidak bisa kembali lagi.
+Pada NextJersey `push()` cocok dipakai untuk kasus seperti saat pengguna membuka halaman detail produk dari list produk. Mereka bisa lihat detail lengkapnya dan kemudian kembali ke halaman utama kalau mau. Sementara `pushReplacement()` cocok saya gunakan saat proses login selesai - pengguna langsung ke dashboard dan tidak perlu bisa kembali ke halaman login lagi.
+
+---
+
+## **Q2:** Bagaimana kamu memanfaatkan hierarchy widget seperti Scaffold, AppBar, dan Drawer untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+
+- **Scaffold**: Ini saya jadikan fondasi setiap halaman di aplikasi. Scaffold memberikan kerangka kerja standar yang sudah include area untuk app bar, navigasi drawer, dan konten utama. Jadi semua halaman punya susunan yang sama dan mudah dipahami pengguna.
+
+- **AppBar**: Di setiap halaman, AppBar saya letakkan di atas untuk menampilkan judul dan fitur penting.
+
+- **Drawer**: Saya buat drawer yang muncul dari sisi kiri dan berisi menu utama seperti Home dan add Product. Dengan drawer yang konsisten, pengguna selalu tahu bagaimana cara navigasi antar halaman tanpa perlu bingung.
+  
+---
+
+## **Q3:** Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+
+- **Padding**: Widget ini membantu saya memberikan spacing yang pas di setiap elemen form. Hasilnya, form terlihat tidak berantakan dan lebih nyaman dipandang. Saya pakai untuk memberi jarak di antara field kategori, price, dan deskripsi produk.
+
+- **SingleChildScrollView**: Berguna banget untuk form yang panjang. Saya bungkus seluruh form dengan widget ini agar bisa di-scroll kalau kontennya melebihi ukuran layar. Jadi pengguna tidak bakal kebingungan mencari field yang tersembunyi di bawah.
+
+- **ListView**: Widget ini saya gunakan di dalam `Drawer` untuk menampilkan navigation menu seperti "Home Page" dan "Add Products". Widget ini dapat menampilkan list atau daftar yang dapat discroll. Performanya bagus dan bisa handle banyak item tanpa lag.
+
+---
+
+## **Q4:** Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+
+Saya memilih palet warna hitam dan merah sebagai identitas visual NextJersey yang konsisten di seluruh aplikasi:
+
+- **Theme Global**: Di file `main.dart`, saya set `primarySwatch` ke `Colors.black` dan secondary color ke `Colors.red`. Ini otomatis diterapkan ke semua komponen widget.
+
+- **AppBar dan Navigation**: Saya manfaatkan `Theme.of(context).colorScheme.primary` untuk AppBar dan Drawer agar warna-warnanya selalu selaras dengan tema utama.
+
+- **Button dan Interactive Elements**: Tombol action seperti "Add to Cart" dan "Save" saya beri warna secondary (red) biar ada kontras visual dan menarik perhatian pengguna.
+
+---
+Checklist untuk tugas ini adalah sebagai berikut:
+- [X] Membuat minimal satu halaman baru pada aplikasi, yaitu halaman formulir tambah produk baru dengan ketentuan sebagai berikut:
+  - [X] Memakai minimal tiga elemen input, yaitu name, price, dan description.
+  - [X] Tambahkan elemen input lain sesuai dengan model pada aplikasi Football Shop Django yang telah kamu buat (misalnya thumbnail, category, dan isFeatured).
+- [X] Memiliki sebuah tombol Save.
+- [X] Setiap elemen input di formulir juga harus divalidasi dengan ketentuan sebagai berikut:
+  - [X] Setiap elemen input tidak boleh kosong.
+  - [X] Setiap elemen input harus berisi data dengan tipe data atribut modelnya.
+- [X] Mengarahkan pengguna ke halaman form tambah produk baru ketika menekan tombol Tambah Produk pada halaman utama.
+- [X] Memunculkan data sesuai isi dari formulir yang diisi dalam sebuah pop-up setelah menekan tombol Save pada halaman form tambah produk baru.
+- [X] Membuat sebuah drawer pada aplikasi dengan ketentuan sebagai berikut:
+  - [X] Drawer minimal memiliki dua buah opsi, yaitu Halaman Utama dan Tambah Produk.
+  - [X] Ketika memilih opsi Halaman Utama, aplikasi akan mengarahkan pengguna ke halaman utama.
+  - [X] Ketika memilih opsi Tambah Produk, aplikasi akan mengarahkan pengguna ke halaman form tambah produk baru.
+- [X] Menjawab beberapa pertanyaan berikut pada README.md pada root folder (silakan modifikasi README.md yang telah kamu buat sebelumnya dan tambahkan subjudul untuk setiap tugas):
+  - [X] Jelaskan perbedaan antara `Navigator.push()` dan `Navigator.pushReplacement()` pada Flutter. Dalam kasus apa sebaiknya masing-masing digunakan pada aplikasi Football Shop kamu?
+  - [X] Bagaimana kamu memanfaatkan hierarchy widget seperti Scaffold, AppBar, dan Drawer untuk membangun struktur halaman yang konsisten di seluruh aplikasi?
+  - [X] Dalam konteks desain antarmuka, apa kelebihan menggunakan layout widget seperti Padding, SingleChildScrollView, dan ListView saat menampilkan elemen-elemen form? Berikan contoh penggunaannya dari aplikasi kamu.
+  - [X] Bagaimana kamu menyesuaikan warna tema agar aplikasi Football Shop memiliki identitas visual yang konsisten dengan brand toko?
+- [X] Melakukan add, commit, dan push ke GitHub.
+
+</details>
+
 <details><summary>Tugas 7: Elemen Dasar Flutter</summary>
 
 
