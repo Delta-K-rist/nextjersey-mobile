@@ -43,7 +43,7 @@ class _NewsFormPageState extends State<NewsFormPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // === Title ===
+              // === Name ===
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
@@ -61,7 +61,47 @@ class _NewsFormPageState extends State<NewsFormPage> {
                   },
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
-                      return "Nama Produk tidak boleh kosong!";
+                      return "Name cannot be empty.";
+                    }
+                    if (value.length < 3) {
+                      return "Name must be at least 3 characters.";
+                    }
+                    if (value.length > 200) {
+                      return "Name cannot exceed 200 characters.";
+                    }
+                    return null;
+                  },
+                ),
+              ),
+
+              // === Price ===
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextFormField(
+                  keyboardType:
+                      TextInputType.number, // Add this for numeric keyboard
+                  decoration: InputDecoration(
+                    hintText: "Harga Produk",
+                    labelText: "Harga Produk",
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                    ),
+                  ),
+                  onChanged: (String? value) {
+                    setState(() {
+                      _price = double.tryParse(value ?? '') ?? 0.0;
+                    });
+                  },
+                  validator: (String? value) {
+                    if (value == null || value.isEmpty) {
+                      return "Harga Produk tidak boleh kosong!";
+                    }
+                    final num? numValue = num.tryParse(value);
+                    if (numValue == null) {
+                      return "Harga harus berupa angka!";
+                    }
+                    if (numValue <= 0) {
+                      return "Harga harus positif!";
                     }
                     return null;
                   },
@@ -88,6 +128,9 @@ class _NewsFormPageState extends State<NewsFormPage> {
                   validator: (String? value) {
                     if (value == null || value.isEmpty) {
                       return "Deskripsi Produk tidak boleh kosong!";
+                    }
+                    if (value.length > 4000) {
+                      return "Description cannot exceed 4000 characters.";
                     }
                     return null;
                   },
@@ -134,8 +177,17 @@ class _NewsFormPageState extends State<NewsFormPage> {
                   ),
                   onChanged: (String? value) {
                     setState(() {
-                      _thumbnail = value!;
+                      _thumbnail = value ?? '';
                     });
+                  },
+                  validator: (String? value) {
+                    if (value != null && value.isNotEmpty) {
+                      final uri = Uri.tryParse(value);
+                      if (uri == null || !uri.hasScheme || !uri.hasAuthority) {
+                        return "Thumbnail harus berupa URL valid (contoh: https://example.com/image.jpg)!";
+                      }
+                    }
+                    return null; // Optional, so no error if empty
                   },
                 ),
               ),
@@ -144,7 +196,7 @@ class _NewsFormPageState extends State<NewsFormPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: SwitchListTile(
-                  title: const Text("Tandai sebagai Berita Unggulan"),
+                  title: const Text("Tandai sebagai Produk unggulan"),
                   value: _isFeatured,
                   onChanged: (bool value) {
                     setState(() {

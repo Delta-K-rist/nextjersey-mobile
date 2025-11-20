@@ -1,6 +1,6 @@
 import 'package:nextjersey/screens/menu.dart';
 import 'package:flutter/material.dart';
-import 'package:nextjersey/screens/newslist_form.dart';
+import 'package:nextjersey/screens/productlist_form.dart';
 
 class ItemCard extends StatelessWidget {
   // Menampilkan kartu dengan ikon dan nama.

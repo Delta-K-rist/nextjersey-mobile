@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nextjersey/screens/menu.dart';
-import 'package:nextjersey/screens/newslist_form.dart';
+import 'package:nextjersey/screens/productlist_form.dart';
 
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
@@ -51,7 +51,7 @@ class LeftDrawer extends StatelessWidget {
 
           ListTile(
             leading: const Icon(Icons.post_add),
-            title: const Text('Add News'),
+            title: const Text('Add Product'),
             // Bagian redirection ke NewsFormPage
             onTap: () {
               Navigator.push(
