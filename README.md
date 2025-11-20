@@ -3,7 +3,7 @@
 
 <details><summary> Tugas 9: Integrasi Layanan Web Django dengan Aplikasi Flutter </summary>
 
-## **Q1:** Mengapa perlu membuat model Dart saat mengambil/mengirim data JSON? (konsekuensi jika langsung memetakan `Map<String, dynamic>`: validasi tipe, null-safety, maintainability)
+## **Q1:** Jelaskan mengapa kita perlu membuat model Dart saat mengambil/mengirim data JSON? Apa konsekuensinya jika langsung memetakan `Map<String, dynamic>` tanpa model (terkait validasi tipe, null-safety, maintainability)?
 
 Pertama, **dari segi keamanan tipe data**: Model Dart memastikan kalau data yang masuk atau keluar dari API itu benar-benar sesuai dengan tipe yang diharapkan. Bayangkan kita expect `age` berupa integer, tapi data JSON kirimnya string—tanpa model, ini bisa jadi error di runtime yang susah di-debug.
 
@@ -17,7 +17,7 @@ Dan terakhir, **data tetap konsisten**: Semua bagian app yang pake data itu akan
 
 ---
 
-## **Q2:** Apa fungsi package `http` dan `CookieRequest` dalam tugas ini? Jelaskan perbedaan peran `http` vs `CookieRequest`
+## **Q2:** Apa fungsi package http dan CookieRequest dalam tugas ini? Jelaskan perbedaan peran http vs CookieRequest.
 
 **Package `http`** itu semacam alat dasar untuk bikin request HTTP—bisa GET, POST, PUT, DELETE. Cara kerjanya sederhana: kita kirim request, terus terima response. Tapi ada kelemahannya: `http` nggak auto-handle cookie atau session authentication. Kalau mau maintain session, kita kudu manage cookie secara manual, yang repot.
 
@@ -27,7 +27,7 @@ Singkatnya: `http` itu alat generik, CookieRequest itu specialist untuk Django a
 
 ---
 
-## **Q3:** Mengapa instance `CookieRequest` perlu dibagikan ke semua komponen di aplikasi Flutter?
+## **Q3:** Jelaskan mengapa instance CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.
 
 **Pertama, session tetap konsisten**: Kalau instance-nya dibagikan (biasanya pakai Provider), semua komponen punya akses ke sesi yang sama. Jadi kalau user udah login di halaman A, terus pindah ke halaman B, session-nya masih aktif. User nggak perlu login lagi.
 
@@ -39,7 +39,7 @@ Singkatnya: `http` itu alat generik, CookieRequest itu specialist untuk Django a
 
 ---
 
-## **Q4:** Jelaskan konfigurasi konektivitas agar Flutter dapat berkomunikasi dengan Django (mengapa menambahkan `10.0.2.2` pada `ALLOWED_HOSTS`, mengaktifkan CORS, pengaturan `SameSite`/cookie, dan menambahkan izin akses internet di Android). Apa yang terjadi jika konfigurasi tidak benar? 
+## **Q4:** Jelaskan konfigurasi konektivitas yang diperlukan agar Flutter dapat berkomunikasi dengan Django. Mengapa kita perlu menambahkan 10.0.2.2 pada ALLOWED_HOSTS, mengaktifkan CORS dan pengaturan SameSite/cookie, dan menambahkan izin akses internet di Android? Apa yang akan terjadi jika konfigurasi tersebut tidak dilakukan dengan benar?
 
 **Menambahkan `10.0.2.2` ke ALLOWED_HOSTS**: Ini IP khusus yang dipakai emulator Android untuk akses localhost dari developer machine. Jadi kalo nggak di-add ke ALLOWED_HOSTS di settings Django, Django bakal tolak request dari emulator. Contoh: kalo emulator minta dari `10.0.2.2:8000`, tapi `10.0.2.2` nggak ada di ALLOWED_HOSTS, response-nya error 400 Bad Request.
 
@@ -57,7 +57,7 @@ Singkatnya: `http` itu alat generik, CookieRequest itu specialist untuk Django a
 
 ---
 
-## **Q5:** Jelaskan mekanisme pengiriman data mulai dari input hingga tampil di Flutter
+## **Q5:** Jelaskan mekanisme pengiriman data mulai dari input hingga dapat ditampilkan pada Flutter.
 
 **Step 1 - User input**: Pengguna isi form di Flutter, misalnya login form atau form tambah produk.
 
@@ -71,7 +71,7 @@ Singkatnya: `http` itu alat generik, CookieRequest itu specialist untuk Django a
 
 ---
 
-## **Q6:** Jelaskan mekanisme autentikasi: login, register, logout (alur dari Flutter → Django → response → tampilan menu)
+## **Q6:** Jelaskan mekanisme autentikasi dari login, register, hingga logout. Mulai dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.
 
 **Register flow**:
 - User isi form register (username, password, email) di Flutter
@@ -98,7 +98,7 @@ Singkatnya: `http` itu alat generik, CookieRequest itu specialist untuk Django a
 
 ---
 
-## **Q7:** Jelaskan langkah-langkah bagaimana kamu mengimplementasikan checklist ini secara **step-by-step** (bukan sekadar mengikuti tutorial)
+## **Q7:** Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step! (bukan hanya sekadar mengikuti tutorial).
 
 Ini langkah-langkah yang saya lakukan:
 
@@ -151,7 +151,7 @@ Ini langkah-langkah yang saya lakukan:
 - [X] **BONUS**: Form tambah produk dengan field lengkap
 - [X] **BONUS**: UI/UX improvement dengan Material 3, modern design, product badges
 
-<details>
+</details>
 
 <details><summary>Tugas 8: Flutter Navigation, Layouts, Forms, and Input Elements</summary>
 
